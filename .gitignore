@@ -39,3 +39,6 @@
 
 # Unignore all dirs
 !*/
+
+# 忽略linkList.out.dSYM文件夹下的文件
+/linkList.out.dSYM/*  

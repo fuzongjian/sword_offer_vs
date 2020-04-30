@@ -10,6 +10,7 @@ typedef struct node
 }Node, *pNode;
 class Solution{
 public:
+    // 创建链表
     static pNode create_node(void){
         printf("will create \n");
         pNode Head, p1, p2;
@@ -28,7 +29,7 @@ public:
         int vals[] = {1,2,3,4,6,7,2,9};
         for (int i = 0; i < num; i++)
         {
-            printf("your input is %d\n", vals[i]);
+            printf("your input is %d \n", vals[i]);
             p1 = (pNode)malloc(sizeof(Node));
             p1->pnext = NULL;
             p1->data = vals[i];
@@ -37,10 +38,11 @@ public:
         }
         return Head;
     }
+    // 遍历链表
     static void print_list(pNode Head)
     {
         pNode p1;
-        p1 = Head->pnext;
+        p1 = Head->pnext;// 注意此处不是p1 = Head，而是p1 = Head->pnext
         while (1)
         {
             if (p1->pnext == NULL)
@@ -52,11 +54,110 @@ public:
             p1 = p1->pnext;
         }
     }
+    // 判断链表是否为空
+    static bool is_empty(pNode Head){
+        if (Head->pnext == NULL)
+        {
+            return true;
+        }
+        return false;
+    }
+    // 链表的长度
+    static int length_list(pNode Head){
+        int i  = 0;
+        pNode p1;
+        if (is_empty(Head))
+        {
+            printf("this list is null");
+
+        }
+        else{
+            p1 = Head->pnext;
+            while (1)
+            {
+                if(p1->pnext == NULL)
+                {
+                    i ++;
+                    break;
+                }
+                i ++;
+                p1 = p1->pnext;
+            }
+            
+        }
+        return i;
+    }
+    // 插入元素
+    static bool insert_list(pNode Head, int pos, int val){
+        int i = 0;
+        pNode p;
+        p = Head;
+        while (p->pnext != NULL && i < pos - 1)     
+        {
+            p = p->pnext;
+            ++ i;
+        }// 将P指向要插入节点位置的前一个节点
+        if(p->pnext == NULL || i > pos - 1) // i > pos - 1 的作用是当i取负值时的一种情况
+            return false;
+        pNode pNew = (pNode)malloc(sizeof(Node));
+        if(pNew == NULL){
+            printf("malloc is failure");
+            exit(-1);
+        }
+        pNew->data = val;
+        pNew->pnext = NULL;
+
+        pNode q = p->pnext;
+        p->pnext = pNew;
+        pNew->pnext = q;
+
+        return true;
+    }
+    // 删除元素
+    static bool delete_list(pNode Head, int pos, int *val){
+        int i = 0;
+        pNode p = Head;
+        while (p->pnext != NULL && i < pos - 1)
+        {
+            p = p->pnext;
+            ++i;
+        }
+        if (p->pnext == NULL || i > pos - 1)
+            return false;
+        pNode q = p->pnext;
+        *val = q->data;
+
+        p->pnext = p->pnext->pnext;
+        free(q);
+        q = NULL;
+        return true;
+    }
+    static void sort_list(pNode Head){
+        int i,j,t;
+        pNode p,q;
+        int len = length_list(Head);
+        for (i = 0, p = Head=>p; i < count; i++)
+        {
+            /* code */
+        }
+        
+    }
 };
 int main(){
-    printf("will run/n");
+    printf("will run \n");
     pNode pHead;
+    int val;
     pHead = Solution::create_node();
+    Solution::print_list(pHead);
+
+    int length = Solution::length_list(pHead);
+    printf("\n this list length is %d \n", length);
+
+    bool status = Solution::insert_list(pHead, 3, 100);
+    printf("\n insert status %d \n", status);
+    Solution::print_list(pHead);
+    bool del_status = Solution::delete_list(pHead, 4, &val);
+    printf("\n delete status %d \n", status);
     Solution::print_list(pHead);
     return 0;
 }

@@ -136,9 +136,19 @@ public:
         int i,j,t;
         pNode p,q;
         int len = length_list(Head);
-        for (i = 0, p = Head=>p; i < count; i++)
+        for (i = 0, p = Head->pnext; i < len - 1; i++, p = p->pnext)    
         {
-            /* code */
+            for (j = i + 1, q = p->pnext;j < len - 1;j++, q = q->pnext)
+            {
+                if (p->data > q->data)
+                {
+                    t = p->data;
+                    p->data = q->data;
+                    q->data = t;
+                }
+                
+            }
+            
         }
         
     }
@@ -158,6 +168,9 @@ int main(){
     Solution::print_list(pHead);
     bool del_status = Solution::delete_list(pHead, 4, &val);
     printf("\n delete status %d \n", status);
+    Solution::print_list(pHead);
+
+    Solution::sort_list(pHead);
     Solution::print_list(pHead);
     return 0;
 }

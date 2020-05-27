@@ -114,6 +114,7 @@ void test(const char* testName, BinaryTreeNode* pNode, BinaryTreeNode* expected)
         printf("Failed.\n");
 }
 void test1(){
+    
     BinaryTreeNode* node1  = createBinaryTreeNode(8);
     BinaryTreeNode* node2 = createBinaryTreeNode(6);
     BinaryTreeNode* node3 = createBinaryTreeNode(10);

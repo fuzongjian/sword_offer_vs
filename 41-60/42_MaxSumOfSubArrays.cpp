@@ -6,7 +6,7 @@
 求所有子数组的和的最大值，要求时间复杂度为O(n)
 */
 bool g_InvalidInput = false;
-bool findMaxSumOfSubArray(int *pData, int nLength)
+int findMaxSumOfSubArray(int* pData, int nLength)
 {
     if((pData == nullptr) || (nLength <= 0))
     {
@@ -14,6 +14,7 @@ bool findMaxSumOfSubArray(int *pData, int nLength)
         return 0;
     }
     g_InvalidInput = false;
+
     int nCurSum = 0;
     int nMaxSum = 0x80000000;
     for(int i = 0; i < nLength; i ++)
@@ -22,6 +23,7 @@ bool findMaxSumOfSubArray(int *pData, int nLength)
             nCurSum = pData[i];
         else 
             nCurSum += pData[i];
+        
         if(nCurSum > nMaxSum)
             nMaxSum = nCurSum;
     }
@@ -38,13 +40,12 @@ void test(const char* testName, int* pData, int nLength, int expected, bool expe
     else 
         printf("Failed.\n");
 }
-void test1()
+int main(int argc, char* argv[])
 {
     int data[] = {1, -2, 3, 10, -4, 7, 2, -5};
     test("test1", data, sizeof(data) / sizeof(int), 18, false);
-}
-int main(int argc, char* argv[])
-{
-    test1();
+
+    int data2[] = {-2, -8, -1, -5, -9};  
+    test("test2", data2, sizeof(data2) / sizeof(int), -1, false);
     return 0;
 }

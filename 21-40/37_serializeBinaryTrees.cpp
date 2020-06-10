@@ -70,6 +70,7 @@ void destoryTree(BinaryTreeNode* pRoot)
         destoryTree(pRigth);
     }
 }
+// method
 void serialize(const BinaryTreeNode* pRoot, ostream& stream)
 {
     if(pRoot == nullptr)

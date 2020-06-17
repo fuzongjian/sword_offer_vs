@@ -47,8 +47,8 @@ int main(int argc, char* argv[])
     char expected[] = "cdefgab";
     char *result = leftRotateString(input, 2);
     if(strcmp(result, expected) == 0)
-        printf("passed.\n");
+        printf("passed.");
     else   
-        printf("failed.\n");
+        printf("failed.");
     return 0;
 }

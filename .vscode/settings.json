@@ -3,6 +3,11 @@
         "algorithm": "cpp",
         "chrono": "cpp",
         "limits": "cpp",
-        "cstdio": "cpp"
+        "cstdio": "cpp",
+        "cmath": "cpp",
+        "complex": "cpp",
+        "deque": "cpp",
+        "functional": "cpp",
+        "locale": "cpp"
     }
 }

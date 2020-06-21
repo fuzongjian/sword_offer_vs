@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <string>
-/* 题目3：找出数组中重复的数字
+/* 题目3：找出数组中重复的数字1
 在一个长度为n的数组里的所有数组都在0到n-1范围内，数组中某些数字时重复的，但不知道有几个数字重复，
 也不知道每个数字重复了几次，请找出数组中任意一个重复的数字。
 eg：输入长度为7的数字{2, 3, 1, 0, 2, 5, 3}，即对应的输出是重复数字2或者3
@@ -13,8 +13,10 @@ bool duplicate(int numbers[], int length, int* duplication)
     
     for(int i = 0; i < length; i ++)
     {
+        // 下标和下标对应的数字不相等，需要进行判断调换位置
         while(numbers[i] != i)
         {
+            // 找到第一个重复数字
             if(numbers[i] == numbers[numbers[i]])
             {
                 *duplication = numbers[i];

@@ -14,6 +14,7 @@ int getDuplication(const int* numbers, int length)
     int start = 1, end = length - 1;
     while(end >= start)
     {
+        // (end - start) >> 1 先将(end - start)的差值转为二进制，再右移1位，eg：1010右移动1位为101
         int middle = ((end - start) >> 1) + start;
         int count = countRange(numbers, length, start, middle);
         if(end == start)

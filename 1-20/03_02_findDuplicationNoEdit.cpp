@@ -16,7 +16,9 @@ int getDuplication(const int* numbers, int length)
     {
         // (end - start) >> 1 先将(end - start)的差值转为二进制，再右移1位，eg：1010右移动1位为101
         int middle = ((end - start) >> 1) + start;
+        // 主要是根据中间值查找（有二分法的思想）
         int count = countRange(numbers, length, start, middle);
+        printf("middle === %d, count === %d \n", middle, count);
         if(end == start)
         {
             if(count > 1)
@@ -24,9 +26,10 @@ int getDuplication(const int* numbers, int length)
             else 
                 break;
         }
-
+        // 重复数字在前半段
         if(count > (middle - start + 1))
             end = middle;
+        // 重复数字在后半段
         else 
             start = middle + 1;
     }

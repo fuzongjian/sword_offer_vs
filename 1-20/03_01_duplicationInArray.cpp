@@ -5,7 +5,7 @@
 也不知道每个数字重复了几次，请找出数组中任意一个重复的数字。
 eg：输入长度为7的数字{2, 3, 1, 0, 2, 5, 3}，即对应的输出是重复数字2或者3
 */ 
-// method
+// method 需要改变原数组顺序
 bool duplicate(int numbers[], int length, int* duplication)
 {
     if(numbers == nullptr || length <= 0)
@@ -30,6 +30,22 @@ bool duplicate(int numbers[], int length, int* duplication)
     }
     return false;
 }
+//method 不改变原数组顺序，但是需要空间复杂度。 来源于leetCode
+int leetCode_solution1(int numbers[], int length)
+{
+    bool flag[length];
+    // 将数组的值全部赋值为false
+    memset(flag, false, length);
+    for(int i = 0; i < length; i ++)
+    {
+        if(flag[numbers[i]])
+            return numbers[i];
+        else 
+            flag[numbers[i]] = true;
+    }
+    return -1;
+}
+
 // test
 bool contains(int array[], int length, int number)
 {
@@ -55,5 +71,13 @@ int main(int argc, char* argv[])
           printf("test2 passed.\n");
     else
         printf("test2 failed.\n");
+
+
+    int result = leetCode_solution1(numbers2, 5);
+    if(result == 2 || result == 4)
+        printf("leetCode_solution1 passed.\n");
+    else 
+        printf("leetCode_solution1 failed.\n");
+
 
 }

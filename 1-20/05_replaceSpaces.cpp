@@ -1,6 +1,6 @@
 #include <string>
 #include <cstdio>
-/* 题目5：替换空格
+/* 题目5：替换空格1
 请实现一个函数，把字符串中的每个空格替换成"%20"
 eg:输入"We are happy"，则输出"We%20are%20happy"
 */ 
@@ -27,6 +27,7 @@ void replaceBlank(char str[], int length)
     int indexOfNew = newLength;
     while(indexOfOriginal >= 0 && indexOfNew > indexOfOriginal)
     {
+        printf("%s ---%d\n", str, indexOfNew);
         if(str[indexOfOriginal] == ' ')
         {
             str[indexOfNew --] = '0';
@@ -40,6 +41,34 @@ void replaceBlank(char str[], int length)
         -- indexOfOriginal;
     }
 }
+// leetCode 运行错误
+void leetCode(char s[])
+{
+    int originalLength = 0, numberOfBlank = 0, i = 0;
+    while(s[i] != '\0')
+    {
+        ++ originalLength;
+        if(s[i] == ' ')
+            numberOfBlank ++;
+        ++ i;
+    }
+    int newLength = originalLength + numberOfBlank*2;
+    while(originalLength >= 0 && newLength > originalLength)
+    {
+        if(s[originalLength] == ' ')
+        {
+            s[newLength--] = '0';
+            s[newLength --] = '2';
+            s[newLength --] = '%';
+        }
+        else 
+        {
+            s[newLength --] = s[originalLength];
+        }
+        -- originalLength;
+    }
+    printf("leetcode === %s", s);
+}
 // test
 
 int main(int argc, char* argv[])
@@ -47,8 +76,11 @@ int main(int argc, char* argv[])
     char string1[100] = "hello world";
     replaceBlank(string1, 100);
     printf("%s\n", string1);
-    char string2[100] = "We are happy";
+    char string2[100] = "We are happy.";
     replaceBlank(string2, 100);
     printf("%s\n", string2);
+
+    leetCode(string2);
+
     return 0;
 }

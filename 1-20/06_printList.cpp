@@ -1,5 +1,6 @@
 #include <string>
 #include <stack>
+#include <vector>
 using namespace std;
 /*
 题目6：从头到尾打印链表
@@ -130,6 +131,22 @@ void printListReversinglyRecursively(ListNode* pHead)
         printf("%d\t", pHead->m_nValue);
     }
 }
+// leetcode 
+void leetcode_solution(ListNode* pHead)
+{
+    std::vector<int>list;
+    while(pHead != nullptr)
+    {
+        list.push_back(pHead->m_nValue);
+        pHead = pHead->m_pNext;
+    }
+    // 反转list
+    reverse(list.begin(), list.end());
+    for(vector<int>::iterator it = list.begin(); it != list.end(); it ++)
+    {
+        printf("%d \t", *it);
+    }
+}
 void test(ListNode* pHead)
 {
     List::printList(pHead);
@@ -152,6 +169,8 @@ void test1()
     List::connectListNodes(node4, node5);
 
     test(node1);
+    printf("\n");
+    leetcode_solution(node1);
 }
 int main(int argc, char* argv[])
 {

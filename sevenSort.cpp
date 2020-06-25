@@ -16,10 +16,12 @@ public:
         cout<<endl;
     }
     static void boddle_sort(int num[], int count){
+        printf("=== 冒泡排序 ===");
         for (int i = 0; i < count; i++)
         {
             for (int j = 0; j < count - i - 1 ; j++)
             {
+                // 由小到大，最大的放在最后
                 if (num[j] > num[j+1])
                 {
                     int temp = num[j];
@@ -32,6 +34,7 @@ public:
         }
     }
     static void select_sort(int num[], int count){
+        printf("=== 选择排序 ===");
         for (int i = 0; i < count; i++)
         {
             int min = i;
@@ -41,6 +44,7 @@ public:
                     min = j;
                 }
             }
+            // 找到最小的放在首位，依次类推
             if (i != min)
             {
                 int temp = num[i];
@@ -51,6 +55,7 @@ public:
         }
     }
     static void insert_sort(int num[], int count){
+        printf("=== 插入排序 ===");
         int i, j;
         for (i = 1; i < count; i++)
         {
@@ -59,7 +64,9 @@ public:
                 int temp = num[i];
                 for (j = i; j > 0; j--)
                 {
-                    if (num[j-1] > temp)num[j] = num[j - 1];else break;
+                    if (num[j-1] > temp)num[j] = num[j - 1];
+                    else 
+                        break;
                 }
                 num[j] = temp;
             }
@@ -67,6 +74,7 @@ public:
         }
     }
     static void binaryInsert_sort(int num[], int count){
+        printf("=== 二分插入排序 ===");
         int i, j;
         for (i = 1; i < count; i++)
         {
@@ -90,6 +98,7 @@ public:
         }
     }
     static void shell_sort(int num[], int count){
+        printf("=== 希尔排序 ===");
         int shellNum = 2;
         int gap = round(count / shellNum);
         while (gap > 0)
@@ -109,7 +118,9 @@ public:
             Solution::print(num, count, "多次循环: ");
         }
     }
+    // 快速排序
     static void fast_sort(int num[], int left, int right){
+        printf("=== 快速排序 ===");
         if(left > right)return;
         int i, j, base, temp;
         i = left, j = right;
@@ -139,20 +150,21 @@ public:
 int main(){
     // 七种常见的排序
     int array[] = {9,1,2,5,4,6,8,7};
-    int count = (int)sizeof(array) / sizeof(*array);
+    int count = sizeof(array) / sizeof(int);
     Solution::print(array, count, "排序之前: ");
     // 冒泡排序
-    // Solution::boddle_sort(array, count);
+    Solution::boddle_sort(array, count);
     // 选择排序
-    // Solution::select_sort(array, count);
+    Solution::select_sort(array, count);
     // 插入排序
-    // Solution::insert_sort(array, count);
+    Solution::insert_sort(array, count);
     // 二分插入排序
-    // Solution::binaryInsert_sort(array, count);
+    Solution::binaryInsert_sort(array, count);
     // 希尔排序
-    // Solution::shell_sort(array, count);
+    Solution::shell_sort(array, count);
     // 快速排序
-    // Solution::fast_sort(array, 0, count-1);
+    Solution::fast_sort(array, 0, count-1);
+    // 堆排序
     Solution::heap_sort(array, count);
 
     Solution::print(array, count, "快速排序: ");

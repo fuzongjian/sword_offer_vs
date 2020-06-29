@@ -1,6 +1,6 @@
 #include <string>
 #include <cstdio>
-// b站视频  https://www.bilibili.com/video/BV1xb411A7wC?t=364
+// b站视频 仔细看完  会有很大收获  https://www.bilibili.com/video/BV1xb411A7wC?t=364 
 /* 题目7：重建二叉树
 输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不包含重复的数字。
 eg:输入前序遍历序列{1, 2, 4, 7, 3, 5, 6, 8}和中序遍历序列{4, 7, 2, 1, 5, 3, 8, 6},则重建吃二叉树并输出头结点。
